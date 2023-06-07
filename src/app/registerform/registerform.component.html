@@ -1,0 +1,82 @@
+<div class="d-flex justify-content-center align-items-center">
+    <mat-card style="min-width: 30%;" class="mt-5">
+        <mat-card-title class="text-center">Kayıt Ekranı</mat-card-title>
+        <mat-card-content>
+            <form class="d-flex flex-column" [formGroup]="registerForm">
+                <mat-form-field>
+                    <mat-label>Ad Soyad</mat-label>
+                    <input matInput placeholder="Adınızı ve soyadınızı giriniz" formControlName="fullname" />
+                    <mat-error *ngIf="registerForm?.get('fullname')?.hasError('required')">
+                        Ad soyad girmek zorunludur.
+                    </mat-error>
+                </mat-form-field>
+
+
+                <mat-form-field>
+                    <mat-label>Yaş</mat-label>
+                    <input matInput placeholder="Yaşınızı giriniz" formControlName="age">
+                    <mat-error *ngIf="registerForm?.get('age')?.hasError('required')">
+                        Yaş alanı boş bırakılamaz
+                    </mat-error>
+                </mat-form-field>
+
+
+                <mat-form-field>
+                    <mat-label>Email</mat-label>
+                    <input matInput placeholder="Email adresinizi giriniz" formControlName="email">
+                    <mat-error *ngIf="registerForm?.get('email')?.hasError('required')">
+                        Email alanı boş bırakılamaz
+                    </mat-error>
+                </mat-form-field>
+
+
+                <mat-form-field>
+                    <mat-label>Parola</mat-label>
+                    <input type="password" matInput placeholder="Şifrenizi giriniz" formControlName="password">
+                    <mat-error *ngIf="registerForm?.get('password')?.hasError('required')">
+                        Şifre alanı boş geçilemez
+                    </mat-error>
+                </mat-form-field>
+
+
+
+                <mat-form-field>
+                    <mat-label>Parolanızı onaylayın</mat-label>
+                    <input type="password" matInput placeholder="Şifrenizi onaylayın" formControlName="confirmpassword">
+                    <mat-error *ngIf="registerForm?.get('confirmpassword')?.hasError('required')">
+                        Lütfen şifrenizi onaylayın
+                    </mat-error>
+
+                    <mat-error *ngIf="registerForm?.get('confirmpassword')?.hasError('not_the_same')">
+                        Şifreler eşleşmiyor.
+                    </mat-error>
+                </mat-form-field>
+
+
+
+                <mat-form-field>
+                    <mat-label>Departman</mat-label>
+                    <input matInput placeholder="Departmanınızı giriniz" formControlName="department">
+                    <mat-error *ngIf="registerForm?.get('department')?.hasError('required')">
+                        Departman bilgisi boş geçilemez.
+                    </mat-error>
+                </mat-form-field>
+
+
+                <mat-form-field>
+                    <mat-label>Maaş</mat-label>
+                    <input matInput placeholder="Maaşınızı giriniz" formControlName="salary">
+                    <mat-error *ngIf="registerForm?.get('salary')?.hasError('required')">
+                        Maaş bilgisi boş geçilemez.
+                    </mat-error>
+                </mat-form-field>
+
+             
+
+
+
+                 <button [disabled]="registerForm.invalid" mat-raised-button color="primary">Kayıt Ol</button>
+            </form>
+        </mat-card-content>
+    </mat-card>
+</div>

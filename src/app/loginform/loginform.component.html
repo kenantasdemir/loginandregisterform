@@ -1,0 +1,50 @@
+<!-- <div class="input-group d-flex justify-content-center align-items-center w-50">
+        <form action="" >
+            <input type="text" class="form-control mt-3" placeholder="Emailinizi giriniz">
+            <input type="password" class="form-control mt-3" placeholder="Şifrenizi giriniz">
+        </form>
+</div> -->
+
+
+<div class="d-flex justify-content-center align-items-center mt-5">
+
+    <mat-card style="width: 500px;">
+        <mat-card-title>Giriş Ekranı</mat-card-title>
+        
+        <mat-card-content>
+            
+            <form [formGroup]="loginForm" action="" class="d-flex flex-column">
+                <mat-form-field>
+                    <mat-label>Email</mat-label>
+                    <input matInput placeholder="Emailinizi giriniz" formControlName="email">
+                    <mat-error *ngIf="loginForm.get('email')?.hasError('required')">
+                        Email girmek zorunludur.
+                    </mat-error>
+
+                    <mat-error *ngIf="loginForm.get('email')?.hasError('email')">
+                            Lütfen geçerli formatta bir email adresi giriniz.
+                    </mat-error>
+
+                
+                </mat-form-field>
+                <mat-form-field>
+                    <mat-label>Şifre</mat-label>
+                    <input type="password" matInput placeholder="Şifrenizi giriniz" formControlName="password">
+                    <mat-error *ngIf="loginForm.get('password')?.hasError('required')">
+                        Şifre alanı zorunludur.
+                    </mat-error>
+                    <mat-error *ngIf="loginForm.get('password')?.hasError('minlength')">
+                        Şifre minimum 8 karakter olmalıdır.
+                    </mat-error>
+
+                    <mat-error *ngIf="loginForm.get('password')?.hasError('maxlenght')">
+                        Şifre maksimum 16 karakter olmalıdır.
+                    </mat-error>
+                </mat-form-field>
+                <button color="primary" [disabled]="loginForm.invalid" mat-raised-button >Gönder</button>
+            </form>
+        </mat-card-content>
+    </mat-card>
+    
+    
+</div>
